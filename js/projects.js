@@ -86,6 +86,52 @@ const pmProjects = [
     accentColor: '#FFA800',
     tags: ['0 to 1 POS', 'Restaurant Tech', 'PRDs & Specs', 'KOT Dispatch', 'Billing Flow'],
     gradient: 'linear-gradient(135deg, #1C1204 0%, #FFA800 100%)'
+  },
+  {
+    id: 'metaverse-education',
+    title: 'Metaverse is the Future of Education',
+    client: 'Strategic Research Report (By Shashank Swaroop)',
+    category: 'research',
+    categoryLabel: 'Market Research & Product Strategy',
+    year: '2024',
+    liveUrl: 'https://drive.google.com/file/d/17D0I0cop8i-cWfDNpwKPjdm6uk6EiHkZ/view?usp=sharing',
+    linkText: 'Read Report',
+    summary: '26-page strategic research report evaluating the Metaverse in Education: Top-down TAM/SAM/SOM market sizing ($1T+ TAM), competitor benchmarking (Morehouse, WVU, UMGC), quantitative user surveys, and PM feasibility conclusions.',
+    fullDescription: 'Authored an in-depth 26-page strategic market and product research report evaluating whether immersive spatial environments (AR/VR/Metaverse) represent the future of higher education and corporate training. Applying a structured Top-Down strategy, the report models the macro market size (TAM/SAM/SOM), profiles pioneer "metaversity" campuses (Morehouse College, West Virginia University, UMGC), benchmarks technological readiness and unit economics ($9k–$48k annual attendance), and analyzes quantitative learner survey data to determine real-world feasibility. Concluded that while the metaverse is not a universal replacement for traditional liberal arts/business education, it forms a high-yield "gold mine" for spatial, technical, and medical/engineering training where experiential immersion dramatically accelerates comprehension.',
+    role: 'Author & Lead Product Researcher (Market Sizing, Competitor Benchmarking, Quantitative Surveys & Analysis)',
+    deliverables: [
+      'Top-Down Macro Strategy & Educational Market Readiness Framework',
+      'Multi-Tier Market Sizing: TAM ($116B growing to $1T+ by 2030), SAM ($20–25B), SOM ($5.7B Certifications)',
+      'Institutional Competitor Analysis (Morehouse College, WVU, UMGC)',
+      'Technological Positioning & Hardware Barrier Assessment (Meta, VictoryXR, Qualcomm)',
+      'Quantitative Survey Methodology & Learner Willingness-to-Pay Analysis',
+      'User Persona Modeling & Immersive Learning Friction Point Mapping',
+      'Strategic PM Synthesis on Feasibility & Technical Domain Applicability'
+    ],
+    featureBreakdown: [
+      { icon: '🔭', title: 'Top-Down Market Sizing', desc: 'Rigorous macro-to-micro financial modeling sizing TAM ($116B growing to $1T+ by 2030), SAM (10M students, $20–25B edtech market), and SOM ($5.7B in specialized certifications).' },
+      { icon: '🏫', title: 'Institutional Benchmarking', desc: 'Deep-dive analysis into pioneering virtual campuses (Morehouse, WVU, UMGC) evaluating tech partnerships (Meta, VictoryXR, Qualcomm) and tuition economics ($9k–$48k/yr).' },
+      { icon: '📊', title: 'Quantitative Surveying', desc: 'Gathered empirical student and faculty survey data on immersive adoption, device accessibility, motion fatigue, and perceived educational value vs. traditional lecture halls.' },
+      { icon: '🎯', title: 'User Persona & PM Takeaways', desc: 'Crafted data-driven student personas and determined that the metaverse is high-impact for technical & spatial mastery (engineering/medicine) rather than non-tech general degrees.' }
+    ],
+    metrics: [
+      { label: 'Metaverse TAM (2030)', value: '$1 Trillion', change: '600M to 1.4B users' },
+      { label: 'Education SAM', value: '$20-25B', change: '10M+ virtual learners' },
+      { label: 'Certifications SOM', value: '$5.7B', change: 'Annual AR/VR skill revenue' },
+      { label: 'Report Scope', value: '26 Pages', change: 'Full report on Google Drive' }
+    ],
+    accentColor: '#B5179E',
+    tags: [
+      'Market Research',
+      'TAM / SAM / SOM',
+      'Metaverse Education',
+      'Quantitative Surveys',
+      'Competitor Analysis',
+      'User Personas',
+      'AR/VR Spatial Tech',
+      'Strategic PM'
+    ],
+    gradient: 'linear-gradient(135deg, #160228 0%, #7209B7 50%, #4CC9F0 100%)'
   }
 ];
 
@@ -140,8 +186,8 @@ class ProjectsManager {
 
           <span class="project-badge-tag">${project.categoryLabel}</span>
           ${project.liveUrl ? `
-            <a href="${project.liveUrl}" target="_blank" rel="noopener noreferrer" class="project-live-link" onclick="event.stopPropagation();" title="Visit live platform">
-              <span>Live App</span>
+            <a href="${project.liveUrl}" target="_blank" rel="noopener noreferrer" class="project-live-link" onclick="event.stopPropagation();" title="${project.category === 'research' ? 'Read Full Research Report' : 'Visit live platform'}">
+              <span>${project.linkText || (project.category === 'research' ? 'Read Report' : 'Live App')}</span>
               <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
                 <path d="M7 17L17 7M17 7H7M17 7V17" />
               </svg>
@@ -223,7 +269,7 @@ class ProjectsManager {
             <span style="font-size: 0.75rem; color: var(--text-muted);">${project.year}</span>
             ${project.liveUrl ? `
               <span style="color: var(--text-muted);">•</span>
-              <span style="font-size: 0.72rem; font-weight: 800; color: var(--accent-cyan); background: rgba(0,255,224,0.1); border: 1px solid rgba(0,255,224,0.3); padding: 2px 10px; border-radius: 12px;">LIVE APP</span>
+              <span style="font-size: 0.72rem; font-weight: 800; color: ${project.accentColor}; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.15); padding: 2px 10px; border-radius: 12px;">${project.category === 'research' ? 'RESEARCH REPORT (PDF)' : 'LIVE APP'}</span>
             ` : ''}
           </div>
           <h2 style="font-size: clamp(2rem, 3.8vw, 3.4rem); font-weight: 800; letter-spacing: -0.03em; color: #fff; line-height: 1.15;">
@@ -238,13 +284,13 @@ class ProjectsManager {
 
           ${project.liveUrl ? `
             <div style="display: flex; align-items: center; gap: 14px; margin-top: 1.25rem; flex-wrap: wrap;">
-              <a href="${project.liveUrl}" target="_blank" rel="noopener noreferrer" class="cta-button-primary" style="text-decoration: none; display: inline-flex; align-items: center; gap: 8px; padding: 10px 22px; font-size: 0.88rem;">
-                <span>Visit Live Platform</span>
+              <a href="${project.liveUrl}" target="_blank" rel="noopener noreferrer" class="cta-button-primary" style="text-decoration: none; display: inline-flex; align-items: center; gap: 8px; padding: 10px 22px; font-size: 0.88rem; background: ${project.category === 'research' ? 'linear-gradient(135deg, #7209B7, #4CC9F0)' : 'var(--accent-amber)'}; color: ${project.category === 'research' ? '#fff' : '#000'}; border: none;">
+                <span>${project.category === 'research' ? 'Open Full Research Report (Google Drive)' : 'Visit Live Platform'}</span>
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
                   <path d="M7 17L17 7M17 7H7M17 7V17" />
                 </svg>
               </a>
-              <span style="font-size: 0.82rem; color: var(--accent-cyan); font-family: monospace;">${project.liveUrl}</span>
+              <span style="font-size: 0.82rem; color: var(--accent-cyan); font-family: monospace;">${project.category === 'research' ? 'Google Drive Document (26 Pages)' : project.liveUrl}</span>
             </div>
           ` : ''}
         </div>
@@ -314,7 +360,7 @@ class ProjectsManager {
           <div>
             ${project.liveUrl ? `
               <a href="${project.liveUrl}" target="_blank" rel="noopener noreferrer" style="font-size: 0.88rem; color: var(--accent-cyan); font-weight: 700; text-decoration: none; display: inline-flex; align-items: center; gap: 6px;">
-                <span>Open ${project.title.split('—')[0].trim()} Live</span>
+                <span>${project.category === 'research' ? 'Open Full Research Report (Google Drive)' : 'Open ' + project.title.split('—')[0].trim() + ' Live'}</span>
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
                   <path d="M7 17L17 7M17 7H7M17 7V17" />
                 </svg>

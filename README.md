@@ -14,6 +14,9 @@
 - **Twinleaves Restaurant POS**
   - High-concurrency 0-to-1 POS system built for enterprise dining and QSRs.
   - Features: Real-time interactive floor & table mapping, rapid 3-tap counter billing, sub-second Kitchen Order Ticket (KOT) routing, and split/multi-tender cash & UPI payment workflows.
+- **Metaverse is the Future of Education** ([Full Research Report PDF](https://drive.google.com/file/d/17D0I0cop8i-cWfDNpwKPjdm6uk6EiHkZ/view?usp=sharing))
+  - 26-page strategic market research report evaluating immersive spatial environments in higher education.
+  - Features: Top-down TAM/SAM/SOM financial sizing ($1T+ TAM by 2030), institutional competitor benchmarking (Morehouse College, West Virginia University, UMGC), quantitative student surveys, and strategic PM feasibility synthesis.
 
 ---
 
