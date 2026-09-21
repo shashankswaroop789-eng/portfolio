@@ -1,0 +1,203 @@
+/* ==========================================================================
+   FOOTER & OUTRO SECTION
+   Recreating the whimsical character, copy, and quick response promise
+   ========================================================================== */
+
+.site-footer {
+  position: relative;
+  padding: clamp(80px, 12vw, 160px) 0 40px;
+  background-color: var(--bg-black);
+  overflow: hidden;
+  border-top: 1px solid var(--border-glass);
+}
+
+.footer-content-wrapper {
+  position: relative;
+  z-index: 10;
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: clamp(2rem, 5vw, 6rem);
+  align-items: center;
+}
+
+/* Outro Copy */
+.footer-text-area {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.footer-eyebrow {
+  font-size: clamp(1.1rem, 2vw, 1.5rem);
+  font-weight: 500;
+  color: var(--text-primary);
+  opacity: 0.9;
+}
+
+.footer-headline {
+  font-size: clamp(2.4rem, 5.2vw, 5.2rem);
+  font-weight: 800;
+  letter-spacing: -0.035em;
+  color: var(--text-primary);
+  line-height: 1.1;
+}
+
+.footer-email-link {
+  color: #D6FF66; /* Vibrant lime/yellow from Dribbble outro */
+  text-decoration: underline;
+  text-underline-offset: 6px;
+  cursor: pointer;
+  display: inline-block;
+  transition: all var(--duration-fast) ease;
+}
+
+.footer-email-link:hover {
+  color: var(--accent-cyan);
+  text-shadow: 0 0 20px var(--accent-cyan-glow);
+}
+
+.footer-subheading {
+  font-size: clamp(1.8rem, 3.5vw, 3.2rem);
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  color: var(--text-primary);
+  margin-top: 0.5rem;
+}
+
+.footer-cta-row {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  margin-top: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.cta-button-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--text-primary);
+  color: var(--bg-black);
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  padding: 16px 32px;
+  border-radius: 40px;
+  box-shadow: 0 10px 30px rgba(255, 255, 255, 0.2);
+  transition: all 0.3s var(--ease-out-expo);
+  cursor: pointer;
+}
+
+.cta-button-primary:hover {
+  background: var(--accent-cyan);
+  box-shadow: 0 10px 35px var(--accent-cyan-glow);
+  transform: translateY(-2px);
+}
+
+.copy-email-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid var(--border-glass);
+  color: var(--text-primary);
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding: 16px 24px;
+  border-radius: 40px;
+  transition: all var(--duration-fast) ease;
+  cursor: pointer;
+}
+
+.copy-email-btn:hover {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: var(--border-glass-bright);
+}
+
+/* Whimsical Character Artwork from Dribbble Outro */
+.footer-art-column {
+  position: relative;
+  width: 100%;
+  height: clamp(300px, 35vw, 420px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.outro-svg-illustration {
+  width: 100%;
+  max-width: 440px;
+  height: auto;
+  filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.6));
+}
+
+/* Sub-footer / Socials & Copyright */
+.sub-footer-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 3rem;
+  margin-top: clamp(3rem, 6vw, 6rem);
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+
+.footer-brand {
+  font-size: 1.15rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.social-links {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.social-link {
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  transition: color var(--duration-fast) ease;
+}
+
+.social-link:hover {
+  color: var(--accent-cyan);
+}
+
+.footer-copyright {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+/* Toast Notification */
+.toast-notice {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  background: #111726;
+  border: 1px solid var(--accent-cyan);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7), 0 0 20px var(--accent-cyan-glow);
+  color: #fff;
+  padding: 12px 24px;
+  border-radius: 12px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transform: translateY(100px);
+  opacity: 0;
+  transition: all 0.4s var(--ease-out-expo);
+  pointer-events: none;
+}
+
+.toast-notice.show {
+  transform: translateY(0);
+  opacity: 1;
+}

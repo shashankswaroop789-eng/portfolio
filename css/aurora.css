@@ -1,0 +1,108 @@
+/* ==========================================================================
+   AURORA CANVAS & ATMOSPHERIC LIGHTING
+   Smooth procedural gradient waves matching video 00:07-00:12
+   ========================================================================== */
+
+.aurora-section {
+  position: relative;
+  min-height: 100vh;
+  padding: var(--section-pad-y) 0;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  background-color: var(--bg-black);
+}
+
+/* Background Canvas for Aurora Flow */
+.aurora-canvas-container {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0.85;
+}
+
+#auroraCanvas {
+  width: 100%;
+  height: 100%;
+  filter: blur(55px);
+  transform: scale(1.15); /* Prevents edge blurring artifacts */
+}
+
+/* Aurora Ambient Gradient Fallback / Underlay */
+.aurora-gradient-fallback {
+  position: absolute;
+  inset: 0;
+  background: 
+    radial-gradient(circle at 15% 45%, rgba(157, 78, 221, 0.35) 0%, transparent 50%),
+    radial-gradient(circle at 85% 30%, rgba(0, 255, 224, 0.25) 0%, transparent 45%),
+    radial-gradient(circle at 60% 75%, rgba(224, 30, 90, 0.3) 0%, transparent 55%),
+    radial-gradient(circle at 45% 20%, rgba(14, 59, 100, 0.4) 0%, transparent 60%);
+  filter: blur(70px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.aurora-content-container {
+  position: relative;
+  z-index: 10;
+  display: grid;
+  grid-template-columns: 1.05fr 1.25fr;
+  align-items: center;
+  gap: clamp(2rem, 5vw, 6rem);
+  width: 100%;
+}
+
+/* Left Column: Philosophy / Manifesto */
+.aurora-bio-column {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.aurora-author-tag {
+  font-size: clamp(1.4rem, 2.4vw, 2.2rem);
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: -0.02em;
+}
+
+.aurora-statement {
+  font-size: clamp(2rem, 3.8vw, 3.75rem);
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.035em;
+  color: var(--text-primary);
+}
+
+.aurora-statement .serif-accent.cyan {
+  color: var(--accent-cyan);
+  text-shadow: 0 0 35px var(--accent-cyan-glow);
+  font-size: 1.08em;
+}
+
+.aurora-meta-tags {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-top: 1rem;
+}
+
+.aurora-meta-tags span {
+  display: inline-flex;
+  align-items: center;
+}
+
+.aurora-meta-tags span:not(:last-child)::after {
+  content: '/';
+  margin-left: 12px;
+  opacity: 0.5;
+}

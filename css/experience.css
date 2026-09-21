@@ -1,0 +1,335 @@
+/* ==========================================================================
+   EXPERIENCE & LEADERSHIP TIMELINE
+   High-impact career track record for Shashank Swaroop (Lead PM)
+   ========================================================================== */
+
+.experience-section {
+  position: relative;
+  padding: var(--section-pad-y) 0;
+  background-color: var(--bg-black);
+  border-top: 1px solid var(--border-glass);
+  overflow: hidden;
+  z-index: 5;
+}
+
+.experience-header {
+  margin-bottom: 3.5rem;
+  max-width: 780px;
+}
+
+.experience-title {
+  font-size: clamp(2.4rem, 4.8vw, 4.2rem);
+  font-weight: 800;
+  letter-spacing: -0.035em;
+  color: var(--text-primary);
+  line-height: 1.1;
+}
+
+.experience-subtitle {
+  font-size: 1.15rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin-top: 1rem;
+}
+
+/* Timeline Layout */
+.experience-timeline {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 2.25rem;
+  margin-top: 2.5rem;
+}
+
+/* Base track (subtle inactive line) */
+.experience-timeline::before {
+  content: '';
+  position: absolute;
+  top: 15px;
+  bottom: 15px;
+  left: 20px;
+  width: 2px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 2px;
+}
+
+/* Dynamic glowing scrubber line that draws as user scrolls */
+.timeline-scrub-line {
+  position: absolute;
+  top: 15px;
+  left: 20px;
+  width: 2px;
+  height: 0%;
+  background: linear-gradient(180deg, var(--accent-cyan) 0%, var(--accent-amber) 70%, #fff 100%);
+  border-radius: 2px;
+  box-shadow: 0 0 16px var(--accent-cyan), 0 0 30px var(--accent-cyan-glow);
+  transition: height 0.15s cubic-bezier(0.1, 0.9, 0.2, 1);
+  z-index: 1;
+  pointer-events: none;
+}
+
+.timeline-scrub-line::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: -4px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #FFFFFF;
+  box-shadow: 0 0 15px var(--accent-cyan), 0 0 25px var(--accent-cyan);
+}
+
+@media (min-width: 900px) {
+  .experience-timeline::before,
+  .timeline-scrub-line {
+    left: 28px;
+  }
+}
+
+/* Individual Experience Card Item with Scroll Reveal */
+.experience-item {
+  position: relative;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: clamp(1.5rem, 3vw, 2.5rem);
+  align-items: flex-start;
+  opacity: 0.35;
+  transform: translateY(30px);
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.experience-item.in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Node Dot Beacon */
+.timeline-beacon {
+  position: relative;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: #090C13;
+  border: 2px solid var(--border-glass-bright);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+  margin-top: 1.25rem;
+  transition: all 0.3s var(--ease-out-expo);
+}
+
+.timeline-beacon::after {
+  content: '';
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--text-muted);
+  transition: all 0.3s var(--ease-out-expo);
+}
+
+.experience-item:hover .timeline-beacon,
+.experience-item.in-view .timeline-beacon {
+  border-color: var(--accent-cyan);
+  box-shadow: 0 0 20px var(--accent-cyan-glow);
+}
+
+.experience-item:hover .timeline-beacon::after,
+.experience-item.in-view .timeline-beacon::after {
+  background: var(--accent-cyan);
+  transform: scale(1.3);
+}
+
+.experience-item.current .timeline-beacon,
+.experience-item.current.in-view .timeline-beacon {
+  border-color: var(--accent-amber);
+  box-shadow: 0 0 24px var(--accent-amber-glow);
+}
+
+.experience-item.current .timeline-beacon::after,
+.experience-item.current.in-view .timeline-beacon::after {
+  background: var(--accent-amber);
+}
+
+/* Experience Card Body */
+.experience-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-glass);
+  border-radius: 22px;
+  padding: clamp(1.5rem, 3vw, 2.5rem);
+  transition: transform 0.4s var(--ease-out-expo),
+              border-color 0.4s ease,
+              box-shadow 0.4s ease;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.experience-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--border-glass-bright);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+}
+
+.experience-card-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+
+.experience-role-title {
+  font-size: clamp(1.3rem, 2.2vw, 1.85rem);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: #fff;
+  line-height: 1.2;
+}
+
+.experience-period {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent-amber);
+  background: rgba(255, 168, 0, 0.1);
+  padding: 4px 12px;
+  border-radius: 20px;
+  border: 1px solid rgba(255, 168, 0, 0.2);
+}
+
+.experience-company-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  margin-bottom: 1.25rem;
+}
+
+.experience-company-row .domain-tag {
+  color: var(--accent-cyan);
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+/* Bullet Points */
+.experience-bullets {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 1.5rem;
+}
+
+.experience-bullets li {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  line-height: 1.55;
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.experience-bullets li::before {
+  content: '▸';
+  color: var(--accent-cyan);
+  font-size: 0.9rem;
+  line-height: 1.4;
+}
+
+/* Highlighted Metrics Row */
+.experience-metrics-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding-top: 1.25rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.exp-metric-pill {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: #fff;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 6px 14px;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.2s ease;
+}
+
+.experience-card:hover .exp-metric-pill {
+  border-color: rgba(0, 255, 224, 0.3);
+  background: rgba(0, 255, 224, 0.06);
+}
+
+.exp-metric-pill span {
+  color: var(--accent-cyan);
+}
+
+/* POS Highlight Feature Showcase */
+.pos-highlight-box {
+  background: rgba(0, 255, 224, 0.03);
+  border: 1px solid rgba(0, 255, 224, 0.15);
+  border-radius: 16px;
+  padding: 1.25rem 1.5rem;
+  margin: 1.25rem 0 1.5rem 0;
+}
+
+.pos-highlight-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.8rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent-cyan);
+  margin-bottom: 0.75rem;
+}
+
+.pos-modules-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: 10px;
+}
+
+.pos-module-card {
+  background: rgba(0, 0, 0, 0.35);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 12px;
+  padding: 12px 14px;
+  transition: all 0.25s var(--ease-out-expo);
+}
+
+.pos-module-card:hover {
+  border-color: rgba(255, 168, 0, 0.3);
+  transform: translateY(-2px);
+  background: rgba(255, 168, 0, 0.04);
+}
+
+.pos-module-name {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 4px;
+}
+
+.pos-module-desc {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  line-height: 1.45;
+}

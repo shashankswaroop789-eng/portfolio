@@ -1,0 +1,100 @@
+/* ==========================================================================
+   RESPONSIVE LAYOUT & MEDIA QUERIES
+   Ensures flawless experience from mobile to ultra-wide displays
+   ========================================================================== */
+
+@media (max-width: 1024px) {
+  .aurora-content-container {
+    grid-template-columns: 1fr;
+    gap: 3.5rem;
+  }
+  
+  .tools-grid {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+  
+  .footer-content-wrapper {
+    grid-template-columns: 1fr;
+  }
+  
+  .carousel-cards-deck {
+    max-width: 540px;
+    height: 380px;
+  }
+}
+
+@media (max-width: 768px) {
+  :root {
+    --section-pad-x: 20px;
+  }
+
+  .nav-links {
+    display: none; /* In mobile, provide compact mobile menu */
+  }
+
+  .hero-headline-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0;
+  }
+
+  .headline-word-visual {
+    transform: none;
+    margin-top: -0.2em;
+  }
+
+  .headline-word-designer {
+    margin-top: -0.1em;
+  }
+
+  .hero-footer {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2rem;
+  }
+
+  .hero-meta-group {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .hero-scroll-indicator {
+    display: none;
+  }
+
+  .projects-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .carousel-cards-deck {
+    max-width: 100%;
+    height: 360px;
+  }
+
+  .branding-scene {
+    grid-template-columns: 1fr;
+  }
+
+  .lens-container {
+    width: 190px;
+    height: 190px;
+  }
+
+  .sub-footer-bar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+@media (min-width: 1600px) {
+  :root {
+    --container-max: 1600px;
+  }
+  
+  .carousel-cards-deck {
+    max-width: 720px;
+    height: 460px;
+  }
+}

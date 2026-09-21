@@ -1,0 +1,175 @@
+/* ==========================================================================
+   TOOLS & CREATIVE ARSENAL
+   Directly matching Dribbble spec sheet: Ai, Figma, Ae, Manrope, Colors
+   ========================================================================== */
+
+.tools-section {
+  position: relative;
+  padding: var(--section-pad-y) 0;
+  background-color: var(--bg-black);
+  border-top: 1px solid var(--border-glass);
+  border-bottom: 1px solid var(--border-glass);
+  overflow: hidden;
+}
+
+.tools-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(2rem, 5vw, 5rem);
+  align-items: center;
+}
+
+.tools-left-column {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.tools-heading {
+  font-size: clamp(2.5rem, 4.5vw, 4rem);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+}
+
+.tools-description {
+  font-size: 1.1rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+/* Color & Typography Specs Card (Directly from Dribbble presentation sheet) */
+.specs-card-preview {
+  background: #0A0D15;
+  border: 1px solid var(--border-glass);
+  border-radius: 24px;
+  padding: 2.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  position: relative;
+}
+
+.spec-block-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #5B7294;
+  margin-bottom: 0.75rem;
+}
+
+/* Font Showcase */
+.font-showcase-title {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  margin-bottom: 0.25rem;
+}
+
+.font-showcase-charset {
+  font-size: 1.1rem;
+  color: var(--text-muted);
+  letter-spacing: 0.05em;
+}
+
+/* Color Swatches Grid */
+.color-swatches-row {
+  display: flex;
+  gap: 2.5rem;
+  align-items: center;
+}
+
+.swatch-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.swatch-circle {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+  transition: transform var(--duration-fast) ease;
+}
+
+.swatch-circle:hover {
+  transform: scale(1.08);
+}
+
+.swatch-circle.amber {
+  background-color: var(--accent-amber);
+  box-shadow: 0 10px 30px var(--accent-amber-glow);
+}
+
+.swatch-circle.cyan {
+  background-color: var(--accent-cyan);
+  box-shadow: 0 10px 30px var(--accent-cyan-glow);
+}
+
+.swatch-hex {
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: #5B7294;
+  text-transform: uppercase;
+}
+
+/* Tools App Icons (Ai, Figma, Ae) */
+.tools-showcase-row {
+  display: flex;
+  align-items: center;
+  gap: clamp(1rem, 2vw, 1.75rem);
+  flex-wrap: wrap;
+}
+
+.tool-app-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.tool-app-icon {
+  width: 72px;
+  height: 72px;
+  border-radius: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 900;
+  font-size: 1.75rem;
+  letter-spacing: -0.03em;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5);
+  transition: transform 0.3s var(--ease-out-expo), box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+.tool-app-icon:hover {
+  transform: translateY(-6px) scale(1.05);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.7);
+}
+
+.tool-app-icon.illustrator {
+  background: #330000;
+  border: 1px solid #FF9A00;
+  color: #FF9A00;
+}
+
+.tool-app-icon.figma {
+  background: #1E1E1E;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  padding: 14px;
+}
+
+.tool-app-icon.aftereffects {
+  background: #00005B;
+  border: 1px solid #9999FF;
+  color: #9999FF;
+}
+
+.tool-app-name {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}

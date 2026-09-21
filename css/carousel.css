@@ -1,0 +1,553 @@
+/* ==========================================================================
+   STACKED 3D CARDS CAROUSEL
+   Matching Dribbble video frames 00:07 - 00:12
+   ========================================================================== */
+
+.carousel-stage-wrapper {
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  perspective: 1200px;
+}
+
+.carousel-cards-deck {
+  position: relative;
+  width: 100%;
+  max-width: 640px;
+  height: 420px;
+  transform-style: preserve-3d;
+}
+
+/* Individual Card in Stack */
+.stacked-card {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #090C13;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6), 0 10px 20px rgba(0, 0, 0, 0.4);
+  transition: transform 0.65s cubic-bezier(0.16, 1, 0.3, 1),
+              opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.4s ease,
+              box-shadow 0.4s ease;
+  user-select: none;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+}
+
+.stacked-card:hover {
+  border-color: rgba(255, 255, 255, 0.22);
+}
+
+/* Stack Positions */
+.stacked-card[data-depth="0"] {
+  transform: translateY(0) scale(1) translateZ(0);
+  opacity: 1;
+  z-index: 10;
+  pointer-events: auto;
+}
+
+.stacked-card[data-depth="1"] {
+  transform: translateY(-26px) scale(0.93) translateZ(-50px);
+  opacity: 0.7;
+  z-index: 8;
+  pointer-events: auto;
+}
+
+.stacked-card[data-depth="2"] {
+  transform: translateY(-50px) scale(0.86) translateZ(-100px);
+  opacity: 0.35;
+  z-index: 6;
+  pointer-events: auto;
+}
+
+.stacked-card[data-depth="3"] {
+  transform: translateY(-72px) scale(0.8) translateZ(-150px);
+  opacity: 0.1;
+  z-index: 4;
+  pointer-events: none;
+}
+
+.stacked-card[data-depth="hidden"] {
+  transform: translateY(40px) scale(0.7) translateZ(-200px);
+  opacity: 0;
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* Card Header Bar */
+.card-header-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.25rem 1.75rem 0.75rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.card-title-group {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.card-dot-toggle {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(255, 255, 255, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.stacked-card[data-depth="0"] .card-dot-toggle::after {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent-cyan);
+}
+
+.card-category-title {
+  font-size: 1.15rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--text-primary);
+}
+
+.card-category-tag {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+/* Card Visual Body */
+.card-visual-body {
+  position: relative;
+  flex: 1;
+  padding: 1.5rem 1.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: radial-gradient(circle at 50% 50%, rgba(20, 27, 42, 0.5) 0%, rgba(9, 12, 19, 0.95) 100%);
+}
+
+/* Specific Card Visuals */
+/* Card 1: Vector Illustration with Yellow Hand */
+.illustration-scene {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.hand-holding-stylus {
+  width: 58%;
+  filter: drop-shadow(0 15px 25px rgba(0, 0, 0, 0.5));
+  transition: transform 0.4s var(--ease-out-expo);
+}
+
+.stacked-card:hover .hand-holding-stylus {
+  transform: translateY(-4px) rotate(-1deg);
+}
+
+.fruit-basket-art {
+  width: 38%;
+  opacity: 0.9;
+}
+
+/* Card 2: Web & Mobile Device Mockup */
+.device-mockup-scene {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+}
+
+.laptop-frame {
+  width: 65%;
+  background: #141721;
+  border-radius: 12px 12px 0 0;
+  border: 2px solid #2A3042;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6);
+  overflow: hidden;
+}
+
+.laptop-screen {
+  aspect-ratio: 16/10;
+  background: linear-gradient(135deg, #102a45 0%, #00FFE0 50%, #9D4EDD 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  padding: 1rem;
+  text-align: center;
+  position: relative;
+}
+
+.laptop-screen h4 {
+  font-size: 1.25rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+}
+
+.laptop-screen span {
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  opacity: 0.9;
+}
+
+.laptop-base {
+  height: 10px;
+  background: #252b3d;
+  border-radius: 0 0 8px 8px;
+  margin: 0 -4px;
+}
+
+.phone-frame {
+  width: 25%;
+  aspect-ratio: 9/19;
+  background: #141721;
+  border-radius: 18px;
+  border: 2.5px solid #2A3042;
+  overflow: hidden;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
+}
+
+.phone-screen {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(180deg, #E01E5A 0%, #FFA800 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 0.6rem;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+/* Card 3: Branding & Identity */
+.branding-scene {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  align-items: center;
+}
+
+.brand-monogram-box {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 14px;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  height: 100%;
+}
+
+.brand-monogram {
+  font-family: var(--font-serif);
+  font-size: 3.5rem;
+  font-style: italic;
+  color: var(--accent-amber);
+  line-height: 1;
+}
+
+.brand-palette-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px;
+  height: 100%;
+}
+
+.palette-swatch {
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 8px;
+  font-size: 0.6rem;
+  font-weight: 700;
+  color: #fff;
+}
+
+/* Card 4: Motion & 3D */
+.motion-scene {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.motion-orbit-ring {
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  border: 1.5px dashed rgba(0, 255, 224, 0.4);
+  position: relative;
+  animation: orbitRotate 12s linear infinite;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.motion-orb {
+  position: absolute;
+  top: -10px;
+  left: calc(50% - 10px);
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--accent-cyan);
+  box-shadow: 0 0 20px var(--accent-cyan);
+}
+
+.motion-center-core {
+  font-size: 1.75rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  background: linear-gradient(135deg, #fff 0%, var(--accent-amber) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+@keyframes orbitRotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* ==========================================================================
+   PRODUCT MANAGER SPECIFIC CARD SCENES
+   ========================================================================== */
+/* Strategy Scene */
+.strategy-scene {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1.25rem;
+  padding: 0.5rem;
+}
+
+.strategy-milestone-track {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+  position: relative;
+}
+
+.strategy-node {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 12px 10px;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.strategy-node.active {
+  border-color: var(--accent-amber);
+  background: rgba(255, 168, 0, 0.1);
+  box-shadow: 0 0 15px rgba(255, 168, 0, 0.2);
+}
+
+.strategy-node-phase {
+  font-size: 0.65rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--accent-amber);
+}
+
+.strategy-node-name {
+  font-size: 0.82rem;
+  font-weight: 800;
+  color: #fff;
+  margin-top: 4px;
+}
+
+.strategy-metric-badge {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgba(0, 0, 0, 0.6);
+  border: 1px solid var(--border-glass);
+  border-radius: 14px;
+  padding: 12px 18px;
+}
+
+/* Growth Scene */
+.growth-scene {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.funnel-bar-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.funnel-bar-header {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #94A3B8;
+}
+
+.funnel-bar-track {
+  height: 10px;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.08);
+  overflow: hidden;
+  position: relative;
+}
+
+.funnel-bar-fill {
+  height: 100%;
+  border-radius: 6px;
+  background: linear-gradient(90deg, var(--accent-amber) 0%, var(--accent-cyan) 100%);
+}
+
+/* AI Platform Scene */
+.ai-agent-scene {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  position: relative;
+}
+
+.agent-core-box {
+  width: 130px;
+  height: 130px;
+  border-radius: 24px;
+  background: radial-gradient(circle at 40% 40%, rgba(0, 255, 224, 0.25) 0%, rgba(10, 15, 26, 0.9) 80%);
+  border: 1.5px solid var(--accent-cyan);
+  box-shadow: 0 0 30px rgba(0, 255, 224, 0.3);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.agent-status-pulse {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--accent-cyan);
+  box-shadow: 0 0 10px var(--accent-cyan);
+}
+
+.agent-core-title {
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: #fff;
+  letter-spacing: -0.02em;
+}
+
+.agent-metric-chip {
+  font-size: 0.65rem;
+  font-weight: 700;
+  color: var(--accent-cyan);
+  letter-spacing: 0.12em;
+  margin-top: 4px;
+}
+
+/* Card Bottom Footer / Pagination */
+.carousel-controls-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 640px;
+  margin-top: 1.75rem;
+  padding: 0 0.5rem;
+}
+
+.carousel-dots {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.carousel-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.2);
+  cursor: pointer;
+  transition: all var(--duration-fast) ease;
+}
+
+.carousel-dot.active {
+  width: 24px;
+  border-radius: 4px;
+  background: var(--accent-cyan);
+  box-shadow: 0 0 10px var(--accent-cyan);
+}
+
+.carousel-nav-buttons {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.carousel-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid var(--border-glass);
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--duration-fast) ease;
+}
+
+.carousel-btn:hover {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: var(--border-glass-bright);
+  transform: translateY(-1px);
+}
